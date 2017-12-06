@@ -1,0 +1,43 @@
+<DOCTYPE html>
+<html lang ='en'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Find your US Representatives API project</title>
+    <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="images">
+  </head>
+  <body>
+    <main>
+      <div class="search container">
+        <fieldset>
+          <legend><h1>Learn who your United States representatives are by inputting your zip code:</h1></legend>
+          <form action="#" name="rep-search" class="js-search-form">
+                       
+              <input type="text" name='zipcode' class='js-query' placeholder="ex. 10022"/><label for="zipcode" class="input-label" required>Please enter a valid 5-digit zipcode</label> <br> 
+              <button type="submit">Lookup Representatives</button>
+            
+           </form>
+         </fieldset>
+      </div>
+     <!--<div class= "results container hidden">  -->        
+      <div class="js-search-results hidden"> 
+        <row class="reps"> 
+        </row>          
+      </div>
+        
+    </main> 
+      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>  
+      <script src="index.js"></script>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+   </body>
+</html>
+
+<!--   <a class="twitter-timeline" href="https://twitter.com/SenPatRoberts">
+Tweets by @TwitterDev
+</a>-->
