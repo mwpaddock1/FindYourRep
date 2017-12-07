@@ -13,7 +13,7 @@ function handleForm() {
      $('.search').addClass('hidden');
      $('.js-search-results').removeClass('hidden');
     
-     //get the zipcode that was entered
+    //get the zipcode that was entered
     const voterZipcode = zipcodeField.val();
     //make sure the user entered five digits
     if (voterZipcode.length === 5) {
@@ -68,48 +68,47 @@ function showRepInfo(repData) {
   const outputResults= $('row.reps');
   //then empty the output region
   outputResults
- .empty()
+  .empty()
    //store the parts we want from the data
   //using object destructuring
   let {officials, offices} = repData;
-  debugger
+debugger
    //map the office info to a new object where we just need the office name and the officialIndices
   const formattedData = offices.map((officeData)=> {
     let newOfficeData = {
       //get the office name (eventually we just want senators and reps)
       name: officeData.name,
-    };
-      console.log(`The new office name is ${officeData.name}`)
-      
-      //get the index number of the officials from the officialIndices 
+      officialIndices: officeData.officialIndices
+    }
+    console.log(`The new office name is ${officeData.name} and officialIndices is ${officeData.officialIndices}`);
 
-     const newOfficials = officeData.officialIndices.map((officialIndex) => (officials[officialIndex]));
-     //then use it to get the officials
-    
-    //  newOfficeData.officials = newOfficials;
-    
-  }); 
+    //get the officials from the office officialIndices
+    const newOfficials = officeData.officialIndices.map((officialIndex) => (officials[officialIndex].name));
+       
+    console.log(`The official is ${newOfficials}`)
+   });
+  
 debugger
     for (let office of formattedData) {
-      for (let official of office.officials) {
-        let officialInfo = { officeName: office[name], name: official[name], party: official[party], urls: official[urls], photoUrl: officials[photoUrl] }
-         formatRepInfo(officialInfo);
+      for (let official of officials) {
+        let officialInfo = {
+           officeName: offices[name],
+           name: officials[name], 
+           party: officials[party], 
+           urls: officials[urls],
+           photoUrl: officials[photoUrl]
+        }
+      }    
+    }    
+  formatRepInfo(officialInfo);
 
-      }
-      outputResults  
-      .append(repInfoHTML)
-      }
-    }
-//   //map the officials to a new officials object where we can get name, party, urls, photoUrl and Twitter handle
-//   const formattedOfficials = officials.map((officialInfo)=> {
-//     let newOfficialInfo = {
-//       name: officialInfo.name,
-//       party: officialInfo.party,
-//       urls: officialInfo.urls,
-//       photoUrl: officialInfo.photoUrl
-//     };
-
+  outputResults  
+  append(repInfoHTML)
+ }
+    
 //     console.log(`The name is ${officialInfo.name}. With Phone: ${officialInfo.phone}, party: ${officialInfo.party} and so on`)
+
+//Twitter Section
 //      //iterate over type to get the index of the twitter handle
 //      //or use find-indexOf
 //     // const twitter = function findTwitter(type) {
@@ -119,25 +118,11 @@ debugger
 //   // then get the Twitter handle 
   
 //  // const twitterHandle = officials.channels.id[twitterIndex];
-//    } )
-
-//  //iterate over the array of offices to find the senators and house reps
-
-  
-//   for (i = 0; i <=offices.length; i++) {
-//    let currentOffice = offices[i];
-
-// // if there's a match on the office name
-//   if (currentOffice.name == "United States Senate") {
-  
-      
-//    }
-//   }   
+//    } )      
+//  }   
 // // just do Senators - until we have a working app and then figure out partial strings for the reps
 // //    || (offices[names[i]] == "PARTIAL string")
- 
-
- 
+  
  function showErr(err) {
     const outputResults = $('row.reps');
     const {status } = err;
@@ -147,20 +132,20 @@ debugger
     let errMsg;
    if (status === 404) {
     errMsg = `We couldn't find that zipcode`
- }
-if (status === 503) {
- errMsg = `We couldn't reach the database's servers!`
- }
-const errHTML = (
-  `<div class="error"">
+   }
+   if (status === 503) {
+   errMsg = `We couldn't reach the database's servers!`
+   }
+  const errHTML = (
+    `<div class="error"">
       <p>${errMsg}. Please enter a valid 5-digit zipcode!<p>
      </div>`
      );
     
-     outputResults
-     .empty()
-     .append(errHTML)
-     .prop('hidden', false);
- }
+  outputResults
+  .empty()
+  .append(errHTML)
+  .prop('hidden', false);
+}
 
 $(handleForm);
