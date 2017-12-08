@@ -86,31 +86,33 @@ function showRepInfo(repData) {
     //get the officials from the office officialIndices
     const newOfficials = officeData.officialIndices.map((officialIndex) => (officials[officialIndex]));
    newOfficeData.officials = newOfficials;    
-    console.log(`The official is ${newOfficials}`);
-  
+      
   return newOfficeData;  
 });
   
-//debugger
+
     for (let office of formattedData) {
- //     debugger
-      for (let official of office.officials) {
-        let officialInfo = {
-           officeName: office.name,
-           name: official.name, 
-           party: official.party, 
-           phones: official.phones,
-           urls: official.urls,
-           photoUrl: official.photoUrl
-        }
-      //  debugger
+      if (office.name === "United States Senate") {
+        debugger
+        for (let official of office.officials) {
+          
+            let officialInfo = {
+              officeName: office.name,
+              name: official.name, 
+              party: official.party, 
+              phones: official.phones,
+              urls: official.urls,
+              photoUrl: official.photoUrl
+            }
+            
   let htmlResults = formatRepInfo(officialInfo);
-      
+     
       outputResults  
       .append(htmlResults)
+    }
       }
     }
-  
+  }
     
 //   function add(num1, num2){
 //    const added= (num1 +num2);
@@ -119,10 +121,8 @@ function showRepInfo(repData) {
 //   }
 // let addedUp =add(1,2);
 
-  }
+  
     
-//     console.log(`The name is ${officialInfo.name}. With Phone: ${officialInfo.phone}, party: ${officialInfo.party} and so on`)
-
 //Twitter Section
 //      //iterate over type to get the index of the twitter handle
 //      //or use find-indexOf
