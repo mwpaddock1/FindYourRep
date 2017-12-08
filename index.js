@@ -64,7 +64,6 @@ const repInfoHTML = (
   return repInfoHTML;   
 }
 
-
 function showRepInfo(repData) {
   // store the element we'll be appending to
   const outputResults= $('row.reps');
@@ -81,7 +80,7 @@ function showRepInfo(repData) {
       name: officeData.name,
       officialIndices: officeData.officialIndices
     }
-    console.log(`The new office name is ${officeData.name} and officialIndices is ${officeData.officialIndices}`);
+    // console.log(`The new office name is ${officeData.name} and officialIndices is ${officeData.officialIndices}`);
 
     //get the officials from the office officialIndices
     const newOfficials = officeData.officialIndices.map((officialIndex) => (officials[officialIndex]));
@@ -90,12 +89,13 @@ function showRepInfo(repData) {
   return newOfficeData;  
 });
   
-
+    //starts the iterating over the offices
     for (let office of formattedData) {
-      if (office.name === "United States Senate") {
-        debugger
-        for (let official of office.officials) {
-          
+    //pulls out just the Senators and the US Reps 
+       if ((office.name.indexOf("United States House") >= 0) || (office.name === "United States Senate"))          
+        // iterates over the officials in the Senator or Rep office
+             for (let official of office.officials) {
+          //gets the details on the specific official
             let officialInfo = {
               officeName: office.name,
               name: official.name, 
@@ -110,10 +110,12 @@ function showRepInfo(repData) {
       outputResults  
       .append(htmlResults)
     }
-      }
-    }
+      
   }
-    
+   
+  }
+    //var str = "The rain in SPAIN stays mainly in the plain"; 
+//var res = str.match(/ain/g);
 //   function add(num1, num2){
 //    const added= (num1 +num2);
 //    const addAgain = (num1 + num2 + num2);
