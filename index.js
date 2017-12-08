@@ -40,7 +40,7 @@ function fetchData(baseURL, zipcode) {
   .fail(showErr);
 } 
 
-function  formatRepInfo(officialInfo) {
+function formatRepInfo(officialInfo) {
 const repInfoHTML = (
 `<div class ="rep col-4">
      <section class="image">
@@ -60,8 +60,10 @@ const repInfoHTML = (
      </section>
    </div>    
 `
-  );   
+  );
+  return repInfoHTML;   
 }
+
 
 function showRepInfo(repData) {
   // store the element we'll be appending to
@@ -72,8 +74,7 @@ function showRepInfo(repData) {
    //store the parts we want from the data
   //using object destructuring
   let {officials, offices} = repData;
-debugger
-   //map the office info to a new object where we just need the office name and the officialIndices
+  //map the office info to a new object where we just need the office name and the officialIndices
   const formattedData = offices.map((officeData)=> {
     let newOfficeData = {
       //get the office name (eventually we just want senators and reps)
@@ -83,28 +84,42 @@ debugger
     console.log(`The new office name is ${officeData.name} and officialIndices is ${officeData.officialIndices}`);
 
     //get the officials from the office officialIndices
-    const newOfficials = officeData.officialIndices.map((officialIndex) => (officials[officialIndex].name));
-       
-    console.log(`The official is ${newOfficials}`)
-   });
+    const newOfficials = officeData.officialIndices.map((officialIndex) => (officials[officialIndex]));
+   newOfficeData.officials = newOfficials;    
+    console.log(`The official is ${newOfficials}`);
   
-debugger
+  return newOfficeData;  
+});
+  
+//debugger
     for (let office of formattedData) {
-      for (let official of officials) {
+ //     debugger
+      for (let official of office.officials) {
         let officialInfo = {
-           officeName: offices[name],
-           name: officials[name], 
-           party: officials[party], 
-           urls: officials[urls],
-           photoUrl: officials[photoUrl]
+           officeName: office.name,
+           name: official.name, 
+           party: official.party, 
+           phones: official.phones,
+           urls: official.urls,
+           photoUrl: official.photoUrl
         }
-      }    
-    }    
-  formatRepInfo(officialInfo);
+      //  debugger
+  let htmlResults = formatRepInfo(officialInfo);
+      
+      outputResults  
+      .append(htmlResults)
+      }
+    }
+  
+    
+//   function add(num1, num2){
+//    const added= (num1 +num2);
+//    const addAgain = (num1 + num2 + num2);
+//    return (added + addAgain);
+//   }
+// let addedUp =add(1,2);
 
-  outputResults  
-  append(repInfoHTML)
- }
+  }
     
 //     console.log(`The name is ${officialInfo.name}. With Phone: ${officialInfo.phone}, party: ${officialInfo.party} and so on`)
 
