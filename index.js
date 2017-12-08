@@ -12,6 +12,8 @@ function handleForm() {
     //hide the search form and display the results
      $('.search').addClass('hidden');
      $('.js-search-results').removeClass('hidden');
+     $('body').css('background-image', 'url(../images/american-flag.jpg)');
+     
     
     //get the zipcode that was entered
     const voterZipcode = zipcodeField.val();
@@ -52,14 +54,17 @@ const repInfoHTML = (
      </section>
      <section class ="info-box">
        Party: ${officialInfo.party}<br>
+
        Phone: ${officialInfo.phones}<br>
        <a href ='${officialInfo["urls"]}'>Visit the website</a>
      </section>
      <section class="tweets">
-     <a class = "twitter-timeline" href="https://twitter.com/'${officialInfo.tweets}'">Recent Tweets</a>
+       <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}">Recent Tweets</a>
+
      </section>
    </div>    
 `
+// <a class="twitter-timeline" href="https://twitter.com/SenPatRoberts">Tweets by @TwitterDev</a>
   );
   return repInfoHTML;   
 }
@@ -76,13 +81,11 @@ function showRepInfo(repData) {
   //map the office info to a new object where we just need the office name and the officialIndices
   const formattedData = offices.map((officeData)=> {
     let newOfficeData = {
-      //get the office name (eventually we just want senators and reps)
+      //get the office name 
       name: officeData.name,
       officialIndices: officeData.officialIndices
     }
-    // console.log(`The new office name is ${officeData.name} and officialIndices is ${officeData.officialIndices}`);
-
-    //get the officials from the office officialIndices
+     //get the officials from the office officialIndices
     const newOfficials = officeData.officialIndices.map((officialIndex) => (officials[officialIndex]));
    newOfficeData.officials = newOfficials;    
       
@@ -95,42 +98,32 @@ function showRepInfo(repData) {
        if ((office.name.indexOf("United States House") >= 0) || (office.name === "United States Senate"))          
         // iterates over the officials in the Senator or Rep office
              for (let official of office.officials) {
-              function isTwitter(socialMedia) {
-                return socialMedia.type === 'Twitter';                
-              }
+               function isTwitter(socialMedia) {
+                 return socialMedia.type === 'Twitter';                
+               }
               const twitterHandle = (official.channels.find(isTwitter).id);
 
           //gets the details on the specific official
-            let officialInfo = {
-              officeName: office.name,
-              name: official.name, 
-              party: official.party, 
-              phones: official.phones,
-              urls: official.urls,
-              photoUrl: official.photoUrl,
-              tweets: twitterHandle
-            }
+             let officialInfo = {
+               officeName: office.name,
+               name: official.name, 
+               party: official.party, 
+               phones: official.phones,
+               urls: official.urls,
+               photoUrl: official.photoUrl,
+               tweets: twitterHandle
+             }
             
-  let htmlResults = formatRepInfo(officialInfo);
+             let htmlResults = formatRepInfo(officialInfo);
      
       outputResults  
       .append(htmlResults);
-//Twitter Section
-//iterate over type to get the index of the twitter handle
-///or use find-indexOf
-         
-            // function isTwitter(socialMedia) {
-            //   return socialMedia.type === 'Twitter';
-              
-            // }
-            // const twitterHandle = (official.channels.find(isTwitter).id);
-
-  console.log(official.channels.find(isTwitter)); 
+      twttr.widgets.load();
+ 
   console.log(official.channels.find(isTwitter).id);
   console.log(twitterHandle)
-    }      
-  }
-   
+      }      
+    }
   }
     
 //   function add(num1, num2){
