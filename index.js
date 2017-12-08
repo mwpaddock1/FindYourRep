@@ -56,7 +56,7 @@ const repInfoHTML = (
        <a href ='${officialInfo["urls"]}'>Visit the website</a>
      </section>
      <section class="tweets">
-     <a class = "twitter-timeline" href="https://twitter.com/'${officialInfo.twitterHandle}'">Recent Tweets</a>
+     <a class = "twitter-timeline" href="https://twitter.com/'${officialInfo.tweets}'">Recent Tweets</a>
      </section>
    </div>    
 `
@@ -95,6 +95,11 @@ function showRepInfo(repData) {
        if ((office.name.indexOf("United States House") >= 0) || (office.name === "United States Senate"))          
         // iterates over the officials in the Senator or Rep office
              for (let official of office.officials) {
+              function isTwitter(socialMedia) {
+                return socialMedia.type === 'Twitter';                
+              }
+              const twitterHandle = (official.channels.find(isTwitter).id);
+
           //gets the details on the specific official
             let officialInfo = {
               officeName: office.name,
@@ -102,44 +107,38 @@ function showRepInfo(repData) {
               party: official.party, 
               phones: official.phones,
               urls: official.urls,
-              photoUrl: official.photoUrl
+              photoUrl: official.photoUrl,
+              tweets: twitterHandle
             }
             
   let htmlResults = formatRepInfo(officialInfo);
      
       outputResults  
-      .append(htmlResults)
-    }
-      
+      .append(htmlResults);
+//Twitter Section
+//iterate over type to get the index of the twitter handle
+///or use find-indexOf
+         
+            // function isTwitter(socialMedia) {
+            //   return socialMedia.type === 'Twitter';
+              
+            // }
+            // const twitterHandle = (official.channels.find(isTwitter).id);
+
+  console.log(official.channels.find(isTwitter)); 
+  console.log(official.channels.find(isTwitter).id);
+  console.log(twitterHandle)
+    }      
   }
    
   }
-    //var str = "The rain in SPAIN stays mainly in the plain"; 
-//var res = str.match(/ain/g);
+    
 //   function add(num1, num2){
 //    const added= (num1 +num2);
-//    const addAgain = (num1 + num2 + num2);
+//    const addAgain = (num1 + num2 + num2)
 //    return (added + addAgain);
 //   }
-// let addedUp =add(1,2);
-
-  
-    
-//Twitter Section
-//      //iterate over type to get the index of the twitter handle
-//      //or use find-indexOf
-//     // const twitter = function findTwitter(type) {
-//       //return type==="Twitter";
-//  // }
-//  // console.log(officials.channels.type.indexOf(findTwitter))
-//   // then get the Twitter handle 
-  
-//  // const twitterHandle = officials.channels.id[twitterIndex];
-//    } )      
-//  }   
-// // just do Senators - until we have a working app and then figure out partial strings for the reps
-// //    || (offices[names[i]] == "PARTIAL string")
-  
+// let addedUp =add(1,2);  
  function showErr(err) {
     const outputResults = $('row.reps');
     const {status } = err;
