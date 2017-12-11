@@ -10,6 +10,7 @@ function handleForm() {
 
     //hide the search form and display the results
      $('.js-search-form').addClass('hidden');
+     debugger
      $('.js-search-results').removeClass('hidden');
      
     //get the address information that was entered 
@@ -61,13 +62,13 @@ const repInfoHTML = (
 `<div class ="rep col-4">
   <section class ="name-box">
      <section class="image">
-       <img src="${officialInfo.photoUrl}">
+       <img src="${officialInfo.photoUrl}" alt="representative-head-shot">
      </section> 
      <section class= "name-title-text"    
        <h1>${officialInfo.name}</h1>
        <h2>${officialInfo.officeName}</h2><br>
      </section>
-  </section>
+  
      <section class ="info-box">
        <ul>
          <li>Party: ${officialInfo.party}</li>
@@ -75,6 +76,7 @@ const repInfoHTML = (
          <li><a href ='${officialInfo["urls"]}'>Visit the website</a></li>
        </ul>
      </section>
+  </section>
      <section class="tweets">
        <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}">Recent Tweets</a>
      </section>
@@ -134,12 +136,12 @@ function showRepInfo(repData) {
      
       outputResults  
       .append(htmlResults);
-      twttr.widgets.load();
  
   console.log(official.channels.find(isTwitter).id);
   console.log(twitterHandle)
       }      
     }
+    twttr.widgets.load();    
   }
     
 //   function add(num1, num2){

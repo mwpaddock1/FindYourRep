@@ -1,11 +1,7 @@
 body {
   padding-top: 50px;
-  /* padding-left: 5%; */
   font-size: 16px;
-  /* background-image: url("images/US_Naval_Jack_48_stars.svg.jpg"); */
-  background-image: url(../images/stars.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url("images/stars.png");
   box-sizing: border-box;
 }
 /*format the search form*/
@@ -28,7 +24,7 @@ fieldset {
 input {
   box-sizing: border-box;
   /* width: 100%; */
-  font-size: 1.2em;
+  font-size: 1.2rem;
   text-align: left;
   padding: 15px 15px;
   display: flex;
@@ -62,24 +58,22 @@ button {
   text-align: center;
 }
 
-.hidden {
-  display: none;
- } 
+
 
 h1 {
   color: #D0D1DC;
   padding-top: 1em;
-  font-size: 3em;
+  font-size: 2.2em;
 }
 /*format the results*/
 
 h2 {color: #D0D1DC;
-  font-size: 1.0em;
+  font-size: 1.2rem;
   padding-left: 3%;
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 .container {
@@ -95,19 +89,17 @@ h3 {
   color: #D0D1DC;
   display: inline-block;
 }
-
+.hidden {
+  display: none;
+ } 
 .js-search-results {
   font-size: 1.5em;
   text-align: center;
-  /* display: inline-flex; */
-  width: 100%;
-}
-row {
-  display: flex;
-}
- .reps {
+ }
+
+ row, .reps {
   text-align: center;
-  display: flex;
+ 
   width: 100%;
   justify-content: space-around;
 }
@@ -120,11 +112,14 @@ img {
   padding-top: 10%;
   
 }
+section {
+  display: flex;
+}
 .name-title-text {
   /* padding-top: 10%; */
   display: inline-block;
   vertical-align: middle;
-  font-size:1.5em;
+  font-size:1.5rem;
 }
  ul {
    padding-left: 5%;
@@ -134,7 +129,7 @@ img {
  li {
    text-align: left;
    padding-left: 3%;
-   font-size: 0.9em;
+   font-size: 1.2rem;
  }
  .name-box {
   padding-bottom: 1.2em;
@@ -146,11 +141,10 @@ img {
   background-color: #D0D1DC;
   color: #2A2544;
   text-align: center;
-  font-size: 1.5em;
-  padding-top: 0.5em;
+  /* font-size: 1.5em;padding-top: 0.5em;
   padding-bottom: 0.5em;
-  margin-bottom: 0.53em;
-}
+  margin-bottom: 0.53em; */
+  }
 .tweets {
   font-size: 1.0em;
   padding: 3%;
@@ -164,29 +158,35 @@ img {
 .col-4, .rep {
      width: 95%;
      border: 2px solid red;
-     display: inline-block;
+     /* display: flex;  */
 }
 
 /*For non-mobile devices*/
 @media only screen and (min-width: 640px) {
   .col-4, .rep {
      width: 31%;
-     display: block;
+     display: flex;
    }
    .container {
     width: 30%;
    }
+   row, .reps {
+    display: flex;
+    }
+
    .image {
     display: block;
    }
     .name-box {
     display: block;
+    width: 50%;
     }
     .name-title-text {
       padding-top: 10%;
     }
     .tweets {
-      padding: 7%;
+      padding: 2%;
+      width: 50%;
     }
     ul {
       padding-left: 30%;
