@@ -3,31 +3,45 @@
 const CONGRESSPERSON_SEARCH_URL = 'https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyDmy5GqaG7XhLaYLbAUuoUqO4DRFT_Lgz4&address=';
 
 function handleForm() {
-  const zipcodeForm = $('form[name=rep-search]');
-  const zipcodeField = $('input[name=zipcode]');
+  const addressForm = $('form[name=rep-search]');
   //when the user clicks on "Lookup Representative"
-  zipcodeForm.on('submit', function(e) {
+  addressForm.on('submit', function(e) {
     e.preventDefault();
 
     //hide the search form and display the results
-     $('.search').addClass('hidden');
+     $('.js-search-form').addClass('hidden');
      $('.js-search-results').removeClass('hidden');
-     $('body').css('background-image', 'url(../images/american-flag.jpg)');
      
-    
-    //get the zipcode that was entered
-    const voterZipcode = zipcodeField.val();
+    //get the address information that was entered 
+     const line1Field = $('input[name=line1]');
+     const cityField = $('input[name=city');
+     const stateField = $('select[name=state]');     
+     const zipcodeField = $('input[name=zipcode]');
+     
+    //get the address info that was entered
+   const voterZipcode = zipcodeField.val();
+   const voterLine1 = line1Field.val();
+   const voterCity = cityField.val();
+   const voterState = stateField.val();
+ 
     //make sure the user entered five digits
-    if (voterZipcode.length === 5) {
-      //pass zipcode in along with the Congressperson endpoint
-      fetchData(CONGRESSPERSON_SEARCH_URL, voterZipcode);
+    if (voterZipcode.length === 5) { 
+      
+      //concatenate the address
+      const voterAddress = (voterLine1 + voterCity + voterState + voterZipcode);
+         
+      //and pass the address in along with the Congressperson endpoint
+      fetchData(CONGRESSPERSON_SEARCH_URL, voterAddress);
     }
     //if the user entered more or less than 5-digits- Alert
     else {
       alert("Please enter a valid 5-digit zipcode.")
     }
-  //reset the input}
-  zipcodeField.val('');
+    //reset the input}
+    line1Field.val('');
+    cityField.val('');
+    stateField.val('');
+    zipcodeField.val('');
   })
 }
 
@@ -45,22 +59,24 @@ function fetchData(baseURL, zipcode) {
 function formatRepInfo(officialInfo) {
 const repInfoHTML = (
 `<div class ="rep col-4">
+  <section class ="name-box">
      <section class="image">
        <img src="${officialInfo.photoUrl}">
-     </section>
-     <section class ="name-box1">
-       <h2 class='js-search-results'>${officialInfo.name}</h2>
+     </section> 
+     <section class= "name-title-text"    
+       <h1>${officialInfo.name}</h1>
        <h2>${officialInfo.officeName}</h2><br>
      </section>
+  </section>
      <section class ="info-box">
-       Party: ${officialInfo.party}<br>
-
-       Phone: ${officialInfo.phones}<br>
-       <a href ='${officialInfo["urls"]}'>Visit the website</a>
+       <ul>
+         <li>Party: ${officialInfo.party}</li>
+         <li>Phone: ${officialInfo.phones}</li>
+         <li><a href ='${officialInfo["urls"]}'>Visit the website</a></li>
+       </ul>
      </section>
      <section class="tweets">
        <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}">Recent Tweets</a>
-
      </section>
    </div>    
 `

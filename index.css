@@ -2,7 +2,8 @@ body {
   padding-top: 50px;
   /* padding-left: 5%; */
   font-size: 16px;
-  background-image: url("images/USCapitolBuilding.jpg");
+  /* background-image: url("images/US_Naval_Jack_48_stars.svg.jpg"); */
+  background-image: url(../images/stars.svg);
   background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;
@@ -11,25 +12,46 @@ body {
 fieldset {  
   border: 0;
   text-align: center;
+  display: flex-container;
+  flex-direction: row;
+  background-color: #2A2544;
+  color: #D0D1DC;
  }
 
 .input-label {
-   display: block;
-   text-align: center;
-   padding-left: 5%;
-   padding-top: 2%;
+   display: flex;
+   text-align: left;
+   padding-left: 2%;
    color: #D0D1DC;
  }
 
 input {
   box-sizing: border-box;
-  width: 100%;
+  /* width: 100%; */
   font-size: 1.2em;
   text-align: left;
   padding: 15px 15px;
-  background-color: #D0D1DC; 
+  display: flex;
 }
-  
+
+ input.city, label.input-label.city{
+  width: 50%;
+  display: flex;
+  font-size: 1.2em;
+}
+
+select.state, label.input-label.state {
+  width: 8%;
+  display: flex;
+  padding-left: 2%;
+  color: #D0D1DC;
+  font-size: 1.2em;
+ 
+}
+input.zip, label.input-label.zipcode {
+  width: 10%;
+  display: flex;
+} 
 button {
   background-color: #D0D1DC;
   color: #2A2544;
@@ -46,12 +68,13 @@ button {
 
 h1 {
   color: #D0D1DC;
-  padding-top 1em;
+  padding-top: 1em;
+  font-size: 3em;
 }
 /*format the results*/
 
 h2 {color: #D0D1DC;
-  font-size: 2em;
+  font-size: 1.0em;
   padding-left: 3%;
 }
 
@@ -70,14 +93,18 @@ h3 {
   text-align: center;
   border: 3px solid #2A2544;
   color: #D0D1DC;
+  display: inline-block;
 }
 
 .js-search-results {
+  font-size: 1.5em;
   text-align: center;
   /* display: inline-flex; */
   width: 100%;
 }
-
+row {
+  display: flex;
+}
  .reps {
   text-align: center;
   display: flex;
@@ -88,14 +115,33 @@ h3 {
   justify-content: center;
 }
 img {
-  width: 40%; 
+  width:40%; 
   max-height: 25%;
   padding-top: 10%;
+  
 }
+.name-title-text {
+  /* padding-top: 10%; */
+  display: inline-block;
+  vertical-align: middle;
+  font-size:1.5em;
+}
+ ul {
+   padding-left: 5%;
+   justify-content: left;
+ }
 
-.name-box1 {
+ li {
+   text-align: left;
+   padding-left: 3%;
+   font-size: 0.9em;
+ }
+ .name-box {
   padding-bottom: 1.2em;
-}
+  display: inline-block;
+  justify-content: space-around;
+  box-sizing: border-box;
+} 
 .info-box, .tweets {
   background-color: #D0D1DC;
   color: #2A2544;
@@ -105,7 +151,10 @@ img {
   padding-bottom: 0.5em;
   margin-bottom: 0.53em;
 }
-
+.tweets {
+  font-size: 1.0em;
+  padding: 3%;
+}
 .error {
   font-size: 1.5em;
   background-color: #D0D1DC;
@@ -115,15 +164,32 @@ img {
 .col-4, .rep {
      width: 95%;
      border: 2px solid red;
-     flex-wrap: wrap;
+     display: inline-block;
 }
 
 /*For non-mobile devices*/
 @media only screen and (min-width: 640px) {
   .col-4, .rep {
      width: 31%;
+     display: block;
    }
    .container {
     width: 30%;
    }
+   .image {
+    display: block;
+   }
+    .name-box {
+    display: block;
+    }
+    .name-title-text {
+      padding-top: 10%;
+    }
+    .tweets {
+      padding: 7%;
+    }
+    ul {
+      padding-left: 30%;
+      justify-content: left;
+    }
  }
