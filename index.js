@@ -10,7 +10,7 @@ function handleForm() {
 
     //hide the search form and display the results
      $('.js-search-form').addClass('hidden');
-     debugger
+     $('banner').addClass('hidden')
      $('.js-search-results').removeClass('hidden');
      
     //get the address information that was entered 
@@ -25,12 +25,10 @@ function handleForm() {
    const voterCity = cityField.val();
    const voterState = stateField.val();
  
-    //make sure the user entered five digits
-    if (voterZipcode.length === 5) { 
-      
+    //make sure the user entered five digits for the zipcode
+    if (voterZipcode.length === 5) {       
       //concatenate the address
-      const voterAddress = (voterLine1 + voterCity + voterState + voterZipcode);
-         
+      const voterAddress = (voterLine1 + voterCity + voterState + voterZipcode);         
       //and pass the address in along with the Congressperson endpoint
       fetchData(CONGRESSPERSON_SEARCH_URL, voterAddress);
     }
@@ -62,7 +60,7 @@ const repInfoHTML = (
 `<div class ="rep col-4">
   <section class ="name-box">
      <section class="image">
-       <img src="${officialInfo.photoUrl}" alt="representative-head-shot">
+       <img src="${officialInfo.photoUrl}" alt="representative-head-shot" class="headshot">
      </section> 
      <section class= "name-title-text"    
        <h1>${officialInfo.name}</h1>
@@ -73,7 +71,7 @@ const repInfoHTML = (
        <ul>
          <li>Party: ${officialInfo.party}</li>
          <li>Phone: ${officialInfo.phones}</li>
-         <li><a href ='${officialInfo["urls"]}'>Visit the website</a></li>
+         <li><a href ='${officialInfo["urls"]}' target="_blank">Visit the website</a></li>
        </ul>
      </section>
   </section>
@@ -82,7 +80,7 @@ const repInfoHTML = (
      </section>
    </div>    
 `
-// <a class="twitter-timeline" href="https://twitter.com/SenPatRoberts">Tweets by @TwitterDev</a>
+
   );
   return repInfoHTML;   
 }
@@ -144,12 +142,6 @@ function showRepInfo(repData) {
     twttr.widgets.load();    
   }
     
-//   function add(num1, num2){
-//    const added= (num1 +num2);
-//    const addAgain = (num1 + num2 + num2)
-//    return (added + addAgain);
-//   }
-// let addedUp =add(1,2);  
  function showErr(err) {
     const outputResults = $('row.reps');
     const {status } = err;
@@ -158,7 +150,7 @@ function showRepInfo(repData) {
 
     let errMsg;
    if (status === 404) {
-    errMsg = `We couldn't find that zipcode`
+    errMsg = `We couldn't find that address`
    }
    if (status === 503) {
    errMsg = `We couldn't reach the database's servers!`

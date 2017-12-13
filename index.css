@@ -1,69 +1,133 @@
 body {
   padding-top: 50px;
   font-size: 16px;
-  background-image: url("images/stars.png");
+  background-image: url("images/us_Capitol.jpg");
   box-sizing: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/* format the banner */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.banner-image {
+  width: 40%;
+  justify-content: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-around;
+  } 
+ .office-building, .flag {
+  width: 80%;
+  justify-content: center;
+  vertical-align: middle;
 }
 /*format the search form*/
+form {
+  background-color: white;
+  
+  color: #2934B1;
+  width: 95%;
+  margin: auto;
+  border-radius: 0.5%;
+}
+.office-image{
+  width: 40%;
+}
 fieldset {  
   border: 0;
   text-align: center;
-  display: flex-container;
+  display: flex;
   flex-direction: row;
-  background-color: #2A2544;
-  color: #D0D1DC;
+  justify-content: center;
+  opacity: 0.75;
  }
+.address-box {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: baseline;
+}
 
 .input-label {
    display: flex;
-   text-align: left;
+   text-align: center;
    padding-left: 2%;
-   color: #D0D1DC;
- }
+   color: #2934B1;
+   font-size: 1.2rem;
+   } 
 
 input {
   box-sizing: border-box;
-  /* width: 100%; */
   font-size: 1.2rem;
-  text-align: left;
+  text-align: center;
   padding: 15px 15px;
   display: flex;
+  border: 3px solid #2934B1;
+  border-radius: 7px;
 }
 
+input.line1, label.input-label.line1 {
+  width: 100%;
+}
  input.city, label.input-label.city{
-  width: 50%;
+  width: 70%;
   display: flex;
   font-size: 1.2em;
+}
+.state-box {
+  width: 8%;
+}
+select.state-dropdown {
+margin: auto;  
+  display: flex;
+  padding: 30%;
+  color: black;
+  font-size: 1.2em;
+  border: 3px solid #2934B1;
+  border-radius: 7px;
 }
 
-select.state, label.input-label.state {
-  width: 8%;
-  display: flex;
-  padding-left: 2%;
-  color: #D0D1DC;
-  font-size: 1.2em;
- 
-}
-input.zip, label.input-label.zipcode {
-  width: 10%;
+input.zip, label.input-label.zip {
+  width: 42%;
   display: flex;
 } 
+
+.box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.street-box {
+  width: 40%;
+  margin: auto;
+  align-content: center;
+}
+.address-end {
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+}
 button {
-  background-color: #D0D1DC;
+  background-color: white;
   color: #2A2544;
   font-size: 1em;
   width: 50%;
   padding: 5px 5px;
   margin: 15px 15px 15px 15px;
   text-align: center;
+  border: 3px solid #2934B1;
+  border-radius: 7px;
+  align-items: center;
 }
 
-
-
 h1 {
-  color: #D0D1DC;
   padding-top: 1em;
   font-size: 2.2em;
+  display: flex;
 }
 /*format the results*/
 
@@ -74,12 +138,6 @@ h2 {color: #D0D1DC;
 
 h3 {
   font-size: 1.5rem;
-}
-
-.container {
-  background-color: #2A2544;
-  display: flex;  
-  text-align: center;
 }
 
 .rep {
@@ -97,17 +155,19 @@ h3 {
   text-align: center;
  }
 
- row, .reps {
+ row {
+  display: flex;
   text-align: center;
- 
+  align-items:flex-start;
   width: 100%;
   justify-content: space-around;
+  flex-direction: column;
 }
 .image {
   justify-content: center;
 }
-img {
-  width:40%; 
+.headshot {
+  width: 60%; 
   max-height: 25%;
   padding-top: 10%;
   
@@ -141,9 +201,6 @@ section {
   background-color: #D0D1DC;
   color: #2A2544;
   text-align: center;
-  /* font-size: 1.5em;padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  margin-bottom: 0.53em; */
   }
 .tweets {
   font-size: 1.0em;
@@ -155,39 +212,68 @@ section {
   padding: 3em 3em;
   border: 3px solid red;
 }
-.col-4, .rep {
+.col-4 {
      width: 95%;
      border: 2px solid red;
      /* display: flex;  */
 }
-
+.col-6 {
+  width: 95%;
+}
 /*For non-mobile devices*/
 @media only screen and (min-width: 640px) {
-  .col-4, .rep {
+  .col-4 {
      width: 31%;
-     display: flex;
+     /* display: flex; */
    }
-   .container {
-    width: 30%;
-   }
-   row, .reps {
-    display: flex;
-    }
-
+   .col-6 {
+    width: 47%;
+  }
+  form {
+    width: 80%;
+  }
+  .address-box {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .street{
+    width: 50%;
+  }
+  input.city, label.input-label.city {
+    width: 100%;
+  }
+  select.state-dropdown {
+    padding:13%;
+  }
+  row {
+    flex-direction: row;
+  }
    .image {
     display: block;
    }
+   .headshot {
+    width:40%; 
+    max-height: 25%;
+    padding-top: 10%;
+    
+  }
     .name-box {
     display: block;
-    width: 50%;
+    width: 100%;
     }
+
     .name-title-text {
       padding-top: 10%;
     }
+    .state {
+      width: 5%;
+    }
     .tweets {
       padding: 2%;
-      width: 50%;
+      width: 100%;
+      /* display: flex; */
     }
+
     ul {
       padding-left: 30%;
       justify-content: left;

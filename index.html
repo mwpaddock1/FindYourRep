@@ -10,22 +10,35 @@
           crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="index.css" rel="stylesheet" type="text/css"/>
-<!--<link href="images"/>-->
   </head>
   <body>
     <main>
-      <form action="#" name="rep-search" class="js-search-form container search">
+      <header>
+        <!--<banner class="flex-container">
+         <div class="banner-image col-6">
+            <img src="images/american-straight-flag.png" class="flag">
+          </div>
+        <div class="banner-image col-6">
+          <img src="images/OfficeBuildingInterior.jpg" class="office-building">
+        </div> 
+       </banner>-->
+      </header>
+     
+      <form action="#" name="rep-search" class="js-search-form">
         <fieldset>  
-          <legend><h1>Learn who your United States representatives are by inputting your address:</h1></legend>            
-           
-            <input type="line1" name='line1' class='line1' placeholder="123 Any Street" required/>
-            <label for="line1" class="input-label">Street</label> <br>      
-      
-            <input type="text" name="city" class="city" placeholder="city"/>
+          <legend class="box"><h1>Learn who your United States representatives are by inputting your address:</h1></legend>
+          <div class="address-box">                        
+            <div class="street-box box">
+              <input type="line1" name='line1' class='line1' placeholder="123 Any Street" required/>
+              <label for="line1" class="input-label">Street</label><br> 
+          </div>
+          <div class="address-end box">
+          <div class="city-box box">
+            <input type="text" name="city" class="city" placeholder="City"/>
             <label for="city" class="input-label city">City</label>
-
-        <!--  <input type="text" name="state" id="state" />-->
-         <select name="state" class="state">  
+          </div>
+          <div class="state-box box">
+         <select name="state" class="state-dropdown">  
            <option value =""></option>       
            <option value="AL">AL</option>
            <option value="AK">AK</option>
@@ -80,19 +93,26 @@
            <option value="WY">WY</option>
         </select>
         <label for="state" class="input-label state">State</label> 
-
+      </div>
+      <div class="zipcode box">
         <input type="text" name="zipcode" class="zip search js-query" placeholder="ex.10022"/>
         <label for="zipcode" class="input-label zipcode" required>5-digit Zip Code</label><br>
-
-        <button type="submit">Lookup Representatives</button>         
+        </div>
+        </div>
+        </div>
+      </fieldset>
+      <div class="button-box box">
+        <button type="submit">Lookup Representatives</button>     </div>   
            
          </fieldset>
-        </form>      
+        </form> 
+        
+      
       <div class="js-search-results hidden"> 
         <row class="reps"> 
         </row>          
-      </div>
-        
+      
+     </div>   
     </main> 
       <script src="https://code.jquery.com/jquery-3.2.1.js"></script>  
       <script src="index.js"></script>
@@ -100,6 +120,3 @@
    </body>
 </html>
 
-<!--   <a class="twitter-timeline" href="https://twitter.com/SenPatRoberts">
-Tweets by @TwitterDev
-</a>-->
