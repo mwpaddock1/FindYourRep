@@ -10,7 +10,6 @@ function handleForm() {
 
     //hide the search form and display the results
      $('.js-search-form').addClass('hidden');
-     $('banner').addClass('hidden')
      $('.js-search-results').removeClass('hidden');
      
     //get the address information that was entered 
@@ -28,7 +27,9 @@ function handleForm() {
     //make sure the user entered five digits for the zipcode
     if (voterZipcode.length === 5) {       
       //concatenate the address
-      const voterAddress = (voterLine1 + voterCity + voterState + voterZipcode);         
+      
+      const voterAddress = (voterLine1 + voterCity + voterState + voterZipcode);   
+       
       //and pass the address in along with the Congressperson endpoint
       fetchData(CONGRESSPERSON_SEARCH_URL, voterAddress);
     }
@@ -59,37 +60,41 @@ function formatRepInfo(officialInfo) {
 const repInfoHTML = (
 `<div class ="rep col-4">
   <section class ="name-box">
-     <section class="image">
+     <div class="image">
        <img src="${officialInfo.photoUrl}" alt="representative-head-shot" class="headshot">
-     </section> 
-     <section class= "name-title-text"    
+     </div> 
+     <div class= "name-title-text">    
        <h1>${officialInfo.name}</h1>
-       <h2>${officialInfo.officeName}</h2><br>
-     </section>
-  
-     <section class ="info-box">
+       <h2>${officialInfo.officeName}</h2>
+     </div>  
+     <div class ="info-box">
        <ul>
          <li>Party: ${officialInfo.party}</li>
          <li>Phone: ${officialInfo.phones}</li>
-         <li><a href ='${officialInfo["urls"]}' target="_blank">Visit the website</a></li>
+         <li><a href ='${officialInfo["urls"]}' target="_blank">Visit the official website</a></li>
+         <li><a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook"></a></li>
        </ul>
-     </section>
-  </section>
-     <section class="tweets">
+      </div>
+    
+  <section class="tweets">
        <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}">Recent Tweets</a>
-     </section>
-   </div>    
+  </section>
+ </section>
+</div> 
 `
 
   );
-  return repInfoHTML;   
+  return repInfoHTML;  
+  debugger 
 }
 
 function showRepInfo(repData) {
   // store the element we'll be appending to
   const outputResults= $('row.reps');
+  
   //then empty the output region
   outputResults
+  
   .empty()
    //store the parts we want from the data
   //using object destructuring
@@ -112,14 +117,20 @@ function showRepInfo(repData) {
     for (let office of formattedData) {
     //pulls out just the Senators and the US Reps 
        if ((office.name.indexOf("United States House") >= 0) || (office.name === "United States Senate"))          
-        // iterates over the officials in the Senator or Rep office
+        // iterates over the officials in the Senator or Rep office  //to find the Twitter handle
              for (let official of office.officials) {
                function isTwitter(socialMedia) {
                  return socialMedia.type === 'Twitter';                
                }
               const twitterHandle = (official.channels.find(isTwitter).id);
 
-          //gets the details on the specific official
+        // and to find the Facebook handle       
+          function isFacebook(socialMedia) {
+            return socialMedia.type === 'Facebook';                
+          }
+         const facebookHandle = (official.channels.find(isFacebook).id);
+           
+         //gets the details on the specific official
              let officialInfo = {
                officeName: office.name,
                name: official.name, 
@@ -127,17 +138,19 @@ function showRepInfo(repData) {
                phones: official.phones,
                urls: official.urls,
                photoUrl: official.photoUrl,
-               tweets: twitterHandle
+               tweets: twitterHandle,
+               facebook: facebookHandle
              }
-            
-             let htmlResults = formatRepInfo(officialInfo);
+    let htmlResults = formatRepInfo(officialInfo);
      
       outputResults  
       .append(htmlResults);
  
   console.log(official.channels.find(isTwitter).id);
-  console.log(twitterHandle)
-      }      
+  console.log(facebookHandle);
+  console.log(officialInfo.facebookHandle)
+            }
+          
     }
     twttr.widgets.load();    
   }
