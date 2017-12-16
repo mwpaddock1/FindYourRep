@@ -11,7 +11,7 @@ function handleForm() {
     //hide the search form and display the results
      $('.js-search-form').addClass('hidden');
      $('.js-search-results').removeClass('hidden');
-     
+     $('.header').removeClass('hidden');
     //get the address information that was entered 
      const line1Field = $('input[name=line1]');
      const cityField = $('input[name=city');
@@ -44,7 +44,6 @@ function handleForm() {
     zipcodeField.val('');
   })
 }
-
 function fetchData(baseURL, zipcode) {
   //make the complete url by concatenating 
   //the endpoint and the zipcode together
@@ -79,7 +78,7 @@ const repInfoHTML = (
       </div>
   <button class="tweets-button">Tweets</button>
   <section class="tweets hidden">
-       <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}">Recent Tweets</a>
+       <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}"></a>
   </section>
  </section>
 </div> 
@@ -144,16 +143,21 @@ function showRepInfo(repData) {
                facebook: facebookHandle
              }
     let htmlResults = formatRepInfo(officialInfo);
-     
+   
       outputResults  
       .append(htmlResults);
-     $('.tweets-button').on('click', function(e) {
-        e.preventDefault();
-        $('.tweets').removeClass('hidden');
+     $('.tweets-button').on('click', function(e) {e.preventDefault();
+        $(".tweets").toggleClass('hidden');
+       
       })
      }
-          
-    }
+    $(".new-search-button").on('click', function(event) {
+      $(".new-search").addClass('hidden');
+      $('.js-search-form').removeClass('hidden');
+      $('.js-search-results').addClass('hidden');
+      $('.header').addClass('hidden');
+   })
+  }
     twttr.widgets.load();    
   }
     

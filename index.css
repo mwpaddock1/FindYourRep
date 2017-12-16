@@ -243,6 +243,18 @@ section {
 .col-6 {
   width: 95%;
 }
+header {
+  display: flex;
+  flex-direction: column;
+}
+.new-search, .voter-home{
+  background-color: #2A2544;
+  text-align: center;
+  border: 3px solid red;
+  color: #D0D1DC;
+  margin: auto;
+  width: 95%;
+}
 /*For non-mobile devices*/
 @media only screen and (min-width: 640px) {
   .col-4 {
@@ -252,6 +264,13 @@ section {
    .col-6 {
     width: 47%;
   }
+  header {
+   flex-direction: row;
+   width: 95%;
+   }
+   .new-search, .voter-home{
+     width: 20%;
+   }
   form {
     width: 30%;
     margin-left:5%;
