@@ -60,9 +60,11 @@ function formatRepInfo(officialInfo) {
 const repInfoHTML = (
 `<div class ="rep col-4">
   <section class ="name-box">
+    <div class="image-box">
      <div class="image">
        <img src="${officialInfo.photoUrl}" alt="representative-head-shot" class="headshot">
      </div> 
+     </div>
      <div class= "name-title-text">    
        <h1>${officialInfo.name}</h1>
        <h2>${officialInfo.officeName}</h2>
@@ -75,8 +77,8 @@ const repInfoHTML = (
          <li><a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook"></a></li>
        </ul>
       </div>
-    
-  <section class="tweets">
+  <button class="tweets-button">Tweets</button>
+  <section class="tweets hidden">
        <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}">Recent Tweets</a>
   </section>
  </section>
@@ -145,11 +147,11 @@ function showRepInfo(repData) {
      
       outputResults  
       .append(htmlResults);
- 
-  console.log(official.channels.find(isTwitter).id);
-  console.log(facebookHandle);
-  console.log(officialInfo.facebookHandle)
-            }
+     $('.tweets-button').on('click', function(e) {
+        e.preventDefault();
+        $('.tweets').removeClass('hidden');
+      })
+     }
           
     }
     twttr.widgets.load();    

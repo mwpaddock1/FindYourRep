@@ -124,13 +124,13 @@ button {
 h1 {
   padding-top: 0.5rem;
   font-size: 1.5rem;
-  display: flex;
+  /* display: flex; */
 }
 /*format the results*/
 
 h2 {color: #D0D1DC;
   font-size: 1.1rem;
-  padding-left: 3%;
+  /* padding-left: 3%; */
 }
 
 h3 {
@@ -159,13 +159,18 @@ h3 {
   width: 100%;
   justify-content: space-around;
   flex-direction: column;
-}
+ }
+  
 .image {
   justify-content: center;
 }
+
+.image-box {
+  height: 300px;
+}
 .headshot {
-  width: 60%; 
-  max-height: 25%;
+  width: 180px; 
+  /* max-height: 25%; */
   padding-top: 10%;
   
 }
@@ -202,8 +207,9 @@ section {
   }
 .tweets {
   font-size: 1.0em;
-  padding: 3%;
+  /* padding: 3%; */
   box-sizing: border-box;
+  width: 100%;
 }
 .fa {
   padding: 5px;
@@ -277,12 +283,15 @@ section {
   row {
     flex-direction: row;
   }
+  /* .image-box {
+    height: 470px;
+  } */
    .image {
     display: block;
    }
    .headshot {
-    width:40%; 
-    max-height: 25%;
+    /* width:40%;  */
+    /* max-height: 25%; */
     padding-top: 10%;
     
   }
