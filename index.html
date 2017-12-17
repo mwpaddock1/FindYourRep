@@ -1,6 +1,7 @@
 <DOCTYPE html>
 <html lang ='en'>
   <head>
+    <meta  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Find your US Representatives API project</title>
@@ -14,26 +15,25 @@
   </head>
   <body>
     <main>
-      <header class="header hidden">     
-        <div class="new-search">         
-          <h2 class="new-search-text">Learn who the representatives are for a different address:</h2>
+      <header class="header">     
+        <div class="new-search hidden">         
           <button class="new-search-button">New Search</button>
         </div>       
       </header>     
       <form action="#" name="rep-search" class="js-search-form">
         <fieldset>  
-          <legend class="legend-box box"><h1>Learn who your United States representatives are by inputting your address:</h1>
+          <legend class="legend-box"><h1>Learn who your United States representatives are by inputting your address:</h1>
           </legend>
           <div class="address-box">                        
-            <div class="street-box box">
+            <div class="street-box">
               <input type="line1" name='line1' class='line1' placeholder="123 Any Street" autofocus required/>
               <label for="line1" class="input-label">Street</label><br> 
             </div>          
-            <div class="city-box box">
+            <div class="city-box">
               <input type="text" name="city" class="city" placeholder="City" required/><label for="city" class="input-label city">City</label>
             </div>
-           <div class="address-end box">
-            <div class="state-box box">
+           <div class="address-end">
+            <div class="state-box">
               <select name="state" class="state-dropdown">  
                 <option value =""></option>       
                 <option value="AL">AL</option>
@@ -90,14 +90,14 @@
               </select>
               <label for="state" class="input-label state">State</label> 
           </div>
-          <div class="zipcode box">
+          <div class="zipcode-box">
             <input type="text" name="zipcode" class="zip search js-query" placeholder="ex.10022"/>
             <label for="zipcode" class="input-label zipcode" required>5-digit Zip Code</label><br>
           </div>
         </div>
         </div>
       </fieldset>
-      <div class="button-box box">
+      <div class="button-box">
         <button type="submit">Lookup Representatives</button>     </div>   
            
          </fieldset>

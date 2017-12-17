@@ -11,7 +11,7 @@ function handleForm() {
     //hide the search form and display the results
      $('.js-search-form').addClass('hidden');
      $('.js-search-results').removeClass('hidden');
-     $('.header').removeClass('hidden');
+     $('.new-search').removeClass('hidden');
     //get the address information that was entered 
      const line1Field = $('input[name=line1]');
      const cityField = $('input[name=city');
@@ -73,7 +73,7 @@ const repInfoHTML = (
          <li>Party: ${officialInfo.party}</li>
          <li>Phone: ${officialInfo.phones}</li>
          <li><a href ='${officialInfo["urls"]}' target="_blank">Visit the official website</a></li>
-         <li><a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook"></a></li>
+         <li>Go to Facebook: <a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook"></a></li>
        </ul>
       </div>
   <button class="tweets-button">Tweets</button>
@@ -109,7 +109,7 @@ function showRepInfo(repData) {
     }
      //get the officials from the office officialIndices
     const newOfficials = officeData.officialIndices.map((officialIndex) => (officials[officialIndex]));
-   newOfficeData.officials = newOfficials;    
+    newOfficeData.officials = newOfficials;    
       
   return newOfficeData;  
 });
@@ -125,7 +125,7 @@ function showRepInfo(repData) {
                }
               const twitterHandle = (official.channels.find(isTwitter).id);
 
-        // and to find the Facebook handle       
+        //and to find the Facebook handle       
           function isFacebook(socialMedia) {
             return socialMedia.type === 'Facebook';                
           }
@@ -143,24 +143,24 @@ function showRepInfo(repData) {
                facebook: facebookHandle
              }
     let htmlResults = formatRepInfo(officialInfo);
-   
+   //output the results
       outputResults  
       .append(htmlResults);
      $('.tweets-button').on('click', function(e) {e.preventDefault();
-        $(".tweets").toggleClass('hidden');
-       
+        $(".tweets").toggleClass('hidden');       
       })
      }
     $(".new-search-button").on('click', function(event) {
       $(".new-search").addClass('hidden');
       $('.js-search-form').removeClass('hidden');
       $('.js-search-results').addClass('hidden');
-      $('.header').addClass('hidden');
+     
    })
   }
+  //load the tweets
     twttr.widgets.load();    
   }
-    
+    //handle user input errors
  function showErr(err) {
     const outputResults = $('row.reps');
     const {status } = err;
