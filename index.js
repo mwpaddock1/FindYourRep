@@ -1,4 +1,4 @@
- //'use strict';
+ 'use strict';
 
  const CONGRESSPERSON_SEARCH_URL = "https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyDmy5GqaG7XhLaYLbAUuoUqO4DRFT_Lgz4&address=";
 

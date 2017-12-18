@@ -14,12 +14,7 @@
   </head>
 
   <body>
-    <main>
-      <header class="header">
-        <div class="new-search hidden">
-          <button class="new-search-button">New Search</button>
-        </div>
-      </header>
+    <main role="main">
       <form action="#" name="rep-search" class="js-search-form">
         <fieldset>
           <legend class="legend-box">
@@ -107,7 +102,10 @@
 
         </fieldset>
       </form>
-      <div class="js-search-results hidden">
+      <div class="js-search-results hidden" aria-live="assertive">
+        <div class="new-search hidden">
+          <button class="new-search-button">New Search</button>
+        </div>
         <row class="reps">
         </row>
 
