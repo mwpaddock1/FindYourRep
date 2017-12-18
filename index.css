@@ -7,7 +7,9 @@ body {
   background-repeat: no-repeat;
 }
 
+
 /*format the search form*/
+
 form {
   background-color: #ECECEC;
   opacity: .80;
@@ -16,21 +18,25 @@ form {
   margin: auto;
   border-radius: 0.5%;
 }
-.office-image{
+
+.office-image {
   width: 40%;
 }
-fieldset {  
+
+fieldset {
   border: 0;
   text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
   opacity: 0.75;
- }
- .legend-box {
-   max-width: 100%;
-   padding-top: 0;
- }
+}
+
+.legend-box {
+  max-width: 100%;
+  padding-top: 0;
+}
+
 .address-box {
   display: flex;
   flex-direction: column;
@@ -39,12 +45,12 @@ fieldset {
 }
 
 .input-label {
-   display: flex;
-   text-align: center;
-   padding-left: 2%;
-   color: #2934B1;
-   font-size: 1.2rem;
-   } 
+  display: flex;
+  text-align: center;
+  padding-left: 2%;
+  color: #2934B1;
+  font-size: 1.2rem;
+}
 
 input {
   box-sizing: border-box;
@@ -54,19 +60,23 @@ input {
   display: flex;
   border: 3px solid #2934B1;
   border-radius: 7px;
+  width: 90%;
 }
 
-input.line1, label.input-label.line1 {
+input.line1,
+label.input-label.line1 {
   width: 100%;
 }
- input.city, label.input-label.city{
+
+input.city,
+label.input-label.city {
   width: 70%;
   display: flex;
   font-size: 1.2rem;
 }
 
-select.state-dropdown {
-  margin: auto;  
+#state-dropdown {
+  margin: auto;
   display: flex;
   padding: 15%;
   color: black;
@@ -75,30 +85,34 @@ select.state-dropdown {
   border-radius: 7px;
 }
 
-input.zip, label.input-label.zip {
+input.zip,
+label.input-label.zip {
   width: 85%;
- } 
+}
 
 .street-box {
-  width: 90%;
-  margin: auto;
-  align-content: center;
+  width: 95%;
+  /* padding-left: 30px; */
+  /* align-content: center; */
 }
 
 .state-box {
-  /* padding-left: 15%; */
   object-fit: contain;
 }
 
- .zipcode-box {
-  width:60%;
+.zipcode-box {
+  width: 60%;
   padding-left: 30px;
-} 
+}
 
 .address-end {
   width: 90%;
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
+}
+
+.button-box {
+  text-align: center;
 }
 
 button {
@@ -118,9 +132,11 @@ h1 {
   font-size: 1.5rem;
 }
 
+
 /*format the results*/
 
-h2 {color: #D0D1DC;
+h2 {
+  color: #D0D1DC;
   font-size: 1.1rem;
 }
 
@@ -138,7 +154,7 @@ h3 {
 
 .hidden {
   display: none;
-} 
+}
 
 .js-search-results {
   font-size: 1.5em;
@@ -148,12 +164,12 @@ h3 {
 row {
   display: flex;
   text-align: center;
-  align-items:flex-start;
+  align-items: flex-start;
   width: 100%;
   justify-content: space-around;
   flex-direction: column;
- }
-  
+}
+
 .image {
   justify-content: center;
 }
@@ -163,7 +179,7 @@ row {
 }
 
 .headshot {
-  width: 180px; 
+  width: 180px;
   padding-top: 10%;
 }
 
@@ -174,13 +190,13 @@ section {
 .name-title-text {
   display: inline-block;
   vertical-align: middle;
-  font-size:1.5rem;
+  font-size: 1.5rem;
 }
 
 ul {
-   padding-left: 10%;
-   justify-content: left;
-   width: 100%;
+  padding-left: 10%;
+  justify-content: left;
+  width: 100%;
 }
 
 li {
@@ -189,20 +205,22 @@ li {
   font-size: 1.2rem;
 }
 
- .name-box {
+.name-box {
   padding-bottom: 1.2em;
   display: inline-block;
   justify-content: space-around;
   box-sizing: border-box;
   width: 100%;
-} 
+}
 
-.info-box, .tweets {
+.info-box,
+.tweets {
   background-color: #D0D1DC;
   color: #2A2544;
   text-align: center;
   padding-top: 1%;
 }
+
 .tweets {
   font-size: 1.0em;
   box-sizing: border-box;
@@ -219,7 +237,7 @@ li {
 }
 
 .fa:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .fa-facebook {
@@ -250,24 +268,26 @@ header {
   border: 3px solid red;
   color: #D0D1DC;
   margin-bottom: 1%;
-  width: 95%;  
+  width: 95%;
 }
-.new-search-button{
+
+.new-search-button {
   font-size: 1rem;
 }
 
+
 /*For non-mobile devices*/
+
 @media only screen and (min-width: 640px) {
   .col-4 {
-     width: 31%;
+    width: 31%;
   }
-   .col-6 {
+  .col-6 {
     width: 47%;
   }
- 
-   .new-search {
-     width: 20%;
-   }
+  .new-search {
+    width: 20%;
+  }
   form {
     width: 30%;
     margin-left: 30px;
@@ -275,74 +295,58 @@ header {
   .legend-box {
     width: 80%;
   }
-  
-  .address-end {   
+  .address-end {
     /* width: 100%; */
-    margin-left: 25px; 
+    margin-left: 25px;
   }
-
   .address-box {
     flex-direction: column;
   }
-  .street-box{
+  .street-box {
     width: 90%;
     margin-left: 30px;
   }
-
-  input.city, label.input-label.city {
+  input.city,
+  label.input-label.city {
     width: 100%;
   }
-
-  .city-box{
+  .city-box {
     width: 70%;
-    margin-left: 30px; 
+    margin-left: 30px;
   }
-
-  .button-box{
+  /* .button-box{
     margin: auto;
-  }
-
-  select.state-dropdown {
-    padding:13%;
+  } */
+  #state-dropdown {
+    padding: 13%;
     box-sizing: border-box;
   }
-
-  .zipcode-box {    
+  .zipcode-box {
     width: 37%;
-  } 
-  /* .state-box {
-    padding-left: 5%;
-  } */
-
+  }
   row {
     flex-direction: row;
   }
-  
-   .image {
+  .image {
     display: block;
-   }
-
-   .headshot {    
-    padding-top: 10%;    
   }
-    .name-box {
+  .headshot {
+    padding-top: 10%;
+  }
+  .name-box {
     display: block;
     width: 100%;
-    }
-   
-    .state {
-      width: 5%;
-    }
-
-    .tweets {
-      padding: 2%;
-      width: 100%;
-     
-    }
-
-    ul {
-      padding-left: 30%;
-      justify-content: left;
-      width: 50%;
-    }
- }
+  }
+  .state {
+    width: 5%;
+  }
+  .tweets {
+    padding: 2%;
+    width: 100%;
+  }
+  ul {
+    padding-left: 30%;
+    justify-content: left;
+    width: 50%;
+  }
+}

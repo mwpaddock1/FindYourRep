@@ -1,118 +1,121 @@
 <DOCTYPE html>
-<html lang ='en'>
+  <html lang='en'>
+
   <head>
-    <meta  <head>
+    <meta head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Find your US Representatives API project</title>
-    <script
-          src="https://code.jquery.com/jquery-3.2.1.min.js"
-          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-          crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="index.css" rel="stylesheet" type="text/css"/>
+    <link href="index.css" rel="stylesheet" type="text/css" />
   </head>
+
   <body>
     <main>
-      <header class="header">     
-        <div class="new-search hidden">         
+      <header class="header">
+        <div class="new-search hidden">
           <button class="new-search-button">New Search</button>
-        </div>       
-      </header>     
+        </div>
+      </header>
       <form action="#" name="rep-search" class="js-search-form">
-        <fieldset>  
-          <legend class="legend-box"><h1>Learn who your United States representatives are by inputting your address:</h1>
+        <fieldset>
+          <legend class="legend-box">
+            <h1>Learn who your United States representatives are by inputting your address:</h1>
           </legend>
-          <div class="address-box">                        
+          <div class="address-box">
             <div class="street-box">
-              <input type="line1" name='line1' class='line1' placeholder="123 Any Street" autofocus required/>
-              <label for="line1" class="input-label">Street</label><br> 
-            </div>          
-            <div class="city-box">
-              <input type="text" name="city" class="city" placeholder="City" required/><label for="city" class="input-label city">City</label>
+              <input type="line1" name='line1' id="line1" placeholder="123 Any Street" autofocus required/>
+              <label for="line1" class="input-label">Street</label>
+              <br>
             </div>
-           <div class="address-end">
-            <div class="state-box">
-              <select name="state" class="state-dropdown">  
-                <option value =""></option>       
-                <option value="AL">AL</option>
-                <option value="AK">AK</option>
-                <option value="AR">AR</option>  
-                <option value="AZ">AZ</option>
-                <option value="CA">CA</option>
-                <option value="CO">CO</option>
-                <option value="CT">CT</option>
-                <option value="DC">DC</option>
-                <option value="DE">DE</option>
-                <option value="FL">FL</option>
-                <option value="GA">GA</option>
-                <option value="HI">HI</option>
-                <option value="IA">IA</option>  
-                <option value="ID">ID</option>
-                <option value="IL">IL</option>
-                <option value="IN">IN</option>
-                <option value="KS">KS</option>
-                <option value="KY">KY</option>
-                <option value="LA">LA</option>
-                <option value="MA">MA</option>
-                <option value="MD">MD</option>
-                <option value="ME">ME</option>
-                <option value="MI">MI</option>
-                <option value="MN">MN</option>
-                <option value="MO">MO</option>  
-                <option value="MS">MS</option>
-                <option value="MT">MT</option>
-                <option value="NC">NC</option>  
-                <option value="NE">NE</option>
-                <option value="NH">NH</option>
-                <option value="NJ">NJ</option>
-                <option value="NM">NM</option>      
-                <option value="NV">NV</option>
-                <option value="NY">NY</option>
-                <option value="ND">ND</option>
-                <option value="OH">OH</option>
-                <option value="OK">OK</option>
-                <option value="OR">OR</option>
-                <option value="PA">PA</option>
-                <option value="RI">RI</option>
-                <option value="SC">SC</option>
-                <option value="SD">SD</option>
-                <option value="TN">TN</option>
-                <option value="TX">TX</option>
-                <option value="UT">UT</option>
-                <option value="VT">VT</option>
-                <option value="VA">VA</option>
-                <option value="WA">WA</option>
-                <option value="WI">WI</option>  
-                <option value="WV">WV</option>
-                <option value="WY">WY</option>
-              </select>
-              <label for="state" class="input-label state">State</label> 
+            <div class="city-box">
+              <input type="text" name="city" id="city" placeholder="City" required/>
+              <label for="city" class="input-label city">City</label>
+            </div>
+            <div class="address-end">
+              <div class="state-box">
+                <select name="state" id="state-dropdown">
+                  <option value=""></option>
+                  <option value="AL">AL</option>
+                  <option value="AK">AK</option>
+                  <option value="AR">AR</option>
+                  <option value="AZ">AZ</option>
+                  <option value="CA">CA</option>
+                  <option value="CO">CO</option>
+                  <option value="CT">CT</option>
+                  <option value="DC">DC</option>
+                  <option value="DE">DE</option>
+                  <option value="FL">FL</option>
+                  <option value="GA">GA</option>
+                  <option value="HI">HI</option>
+                  <option value="IA">IA</option>
+                  <option value="ID">ID</option>
+                  <option value="IL">IL</option>
+                  <option value="IN">IN</option>
+                  <option value="KS">KS</option>
+                  <option value="KY">KY</option>
+                  <option value="LA">LA</option>
+                  <option value="MA">MA</option>
+                  <option value="MD">MD</option>
+                  <option value="ME">ME</option>
+                  <option value="MI">MI</option>
+                  <option value="MN">MN</option>
+                  <option value="MO">MO</option>
+                  <option value="MS">MS</option>
+                  <option value="MT">MT</option>
+                  <option value="NC">NC</option>
+                  <option value="NE">NE</option>
+                  <option value="NH">NH</option>
+                  <option value="NJ">NJ</option>
+                  <option value="NM">NM</option>
+                  <option value="NV">NV</option>
+                  <option value="NY">NY</option>
+                  <option value="ND">ND</option>
+                  <option value="OH">OH</option>
+                  <option value="OK">OK</option>
+                  <option value="OR">OR</option>
+                  <option value="PA">PA</option>
+                  <option value="RI">RI</option>
+                  <option value="SC">SC</option>
+                  <option value="SD">SD</option>
+                  <option value="TN">TN</option>
+                  <option value="TX">TX</option>
+                  <option value="UT">UT</option>
+                  <option value="VT">VT</option>
+                  <option value="VA">VA</option>
+                  <option value="WA">WA</option>
+                  <option value="WI">WI</option>
+                  <option value="WV">WV</option>
+                  <option value="WY">WY</option>
+                </select>
+                <label for="state-dropdown" class="input-label state">State</label>
+              </div>
+              <div class="zipcode-box">
+                <input type="text" name="zipcode" id="code" class="zip search js-query" placeholder="ex.10022" />
+                <label for="zipcode" class="input-label zipcode" required>5-digit Zip Code</label>
+                <br>
+              </div>
+            </div>
           </div>
-          <div class="zipcode-box">
-            <input type="text" name="zipcode" class="zip search js-query" placeholder="ex.10022"/>
-            <label for="zipcode" class="input-label zipcode" required>5-digit Zip Code</label><br>
-          </div>
+        </fieldset>
+        <div class="button-box">
+          <button type="submit">Lookup Representatives</button>
         </div>
-        </div>
-      </fieldset>
-      <div class="button-box">
-        <button type="submit">Lookup Representatives</button>     </div>   
-           
-         </fieldset>
-        </form> 
-        
-      
-      <div class="js-search-results hidden"> 
-        <row class="reps"> 
-        </row> 
-        
-     </div>   
-    </main> 
-      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>  
-      <script src="index.js"></script>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-   </body>
-</html>
 
+        </fieldset>
+      </form>
+      <div class="js-search-results hidden">
+        <row class="reps">
+        </row>
+
+      </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="index.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </body>
+
+  </html>
