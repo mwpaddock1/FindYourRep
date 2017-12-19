@@ -160,7 +160,7 @@
      $(".new-search").addClass("hidden");
      $(".js-search-form").removeClass("hidden");
      $(".js-search-results").addClass("hidden");
-     document.body.style.backgroundImage = "url('images/US_Capitol.jpg')";
+     document.body.style.backgroundImage = "url('images/US-Capitol.jpg')";
    })
 
    //load the tweets
