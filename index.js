@@ -75,7 +75,7 @@
             <li>Party: ${officialInfo.party}</li>
             <li>Phone: ${officialInfo.phones}</li>
             <li><a href ='${officialInfo["urls"]}' target="_blank">Visit the official website</a></li>
-         <li>Go to Facebook: <a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook" aria-label="Go to Facebook"></a></li>
+         <li>Go to Facebook: <a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook" aria-label="Go to Facebook" role="none"></a></li>
           </ul>
         </section>
         <button class="tweets-button">Tweets</button>
