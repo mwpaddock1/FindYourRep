@@ -59,34 +59,36 @@
  function formatRepInfo(officialInfo) {
    const repInfoHTML = (
      `<div class ="rep col-4">
-  <section class ="name-box">
-    <div class="image-box">
-       <div class="image">
-         <img src="${officialInfo.photoUrl}" alt="representative-head-shot" class="headshot">
-       </div> 
-    </div>
-      <div class= "name-title-text">    
-         <h1>${officialInfo.name}</h1>
-         <h2>${officialInfo.officeName}</h2>
-      </div>
-   </section>  
-     <section class ="info-box">
-       <ul>
-         <li>Party: ${officialInfo.party}</li>
-         <li>Phone: ${officialInfo.phones}</li>
-         <li><a href ='${officialInfo["urls"]}' target="_blank">Visit the official website</a></li>
-         <li>Go to Facebook: <a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook"></a></li>
-       </ul>
-    </section>
-    <button class="tweets-button">Tweets</button>
-    <section class="tweets hidden">
-       <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}"></a>
-    </section> 
-</div> 
+        <section class ="name-box">
+          <div class="image-box">
+            <div class="image">
+              <img src="${officialInfo.photoUrl}" alt="representative-head-shot" class="headshot">
+            </div> 
+          </div>
+          <div class= "name-title-text">    
+            <h1>${officialInfo.name}</h1>
+            <h2>${officialInfo.officeName}</h2>
+          </div>
+        </section>  
+        <section class ="info-box">
+          <ul>
+            <li>Party: ${officialInfo.party}</li>
+            <li>Phone: ${officialInfo.phones}</li>
+            <li><a href ='${officialInfo["urls"]}' target="_blank">Visit the official website</a></li>
+         <li>Go to Facebook: <a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook" aria-label="Go to Facebook"></a></li>
+          </ul>
+        </section>
+        <button class="tweets-button">Tweets</button>
+        <section class="tweets hidden">
+          <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}"></a>
+        </section> 
+      </div> 
 `
    );
+   // change the backgound image to red wallpaper
+   document.body.style.backgroundImage = "url('images/crumpled-red.jpg')";
    return repInfoHTML;
-   debugger
+
  }
 
  function showRepInfo(repData) {
@@ -147,21 +149,21 @@
          //output the results
          outputResults
            .append(htmlResults);
-        }
-     }
- 
- $(".tweets-button").on("click", function (e) {
-   e.preventDefault();
-   $(e.currentTarget).siblings(".tweets").toggleClass("hidden");
- })
- $(".new-search-button").on("click", function (event) {
-   $(".new-search").addClass("hidden");
-   $(".js-search-form").removeClass("hidden");
-   $(".js-search-results").addClass("hidden");
- })
+       }
+   }
 
- //load the tweets
- twttr.widgets.load();
+   $(".tweets-button").on("click", function (e) {
+     e.preventDefault();
+     $(e.currentTarget).siblings(".tweets").toggleClass("hidden");
+   })
+   $(".new-search-button").on("click", function (event) {
+     $(".new-search").addClass("hidden");
+     $(".js-search-form").removeClass("hidden");
+     $(".js-search-results").addClass("hidden");
+   })
+
+   //load the tweets
+   twttr.widgets.load();
  }
  //handle user input errors
  function showErr(err) {
@@ -181,8 +183,8 @@
    }
    const errHTML = (
      `<div class="error"">
-      <p>${errMsg}. Please enter a valid 5-digit zipcode!<p>
-     </div>`
+        <p>${errMsg}. Please enter a valid 5-digit zipcode!<p>
+      </div>`
    );
 
    outputResults
