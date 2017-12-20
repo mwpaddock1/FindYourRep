@@ -54,7 +54,7 @@
         <section class ="name-box">
           <div class="image-box">
             <div class="image">
-              <img src="${officialInfo.photoUrl}" alt="representative-head-shot" class="headshot">
+              <img src="${officialInfo.photoUrl}" alt="When available, the representative's headshot is displayed" class="headshot">
             </div> 
           </div>
           <div class= "name-title-text">    
