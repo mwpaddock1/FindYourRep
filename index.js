@@ -4,7 +4,6 @@
 
  function handleForm() {
    const addressForm = $("form[name=rep-search]");
-   //when the user clicks on "Lookup Representative"
    addressForm.on("submit", function (e) {
      e.preventDefault();
 
@@ -12,32 +11,28 @@
      $(".js-search-form").addClass("hidden");
      $(".js-search-results").removeClass("hidden");
      $(".new-search").removeClass("hidden");
-     //get the address information that was entered 
+
      const line1Field = $("input[name=line1]");
      const cityField = $("input[name=city");
      const stateField = $("select[name=state]");
      const zipcodeField = $("input[name=zipcode]");
 
-     //get the address info that was entered
+
      const voterZipcode = zipcodeField.val();
      const voterLine1 = line1Field.val();
      const voterCity = cityField.val();
      const voterState = stateField.val();
 
-     //make sure the user entered five digits for the zipcode
+
      if (voterZipcode.length === 5) {
-       //concatenate the address
 
        const voterAddress = (voterLine1 + voterCity + voterState + voterZipcode);
 
-       //and pass the address in along with the Congressperson endpoint
        fetchData(CONGRESSPERSON_SEARCH_URL, voterAddress);
-     }
-     //if the user entered more or less than 5-digits- Alert
-     else {
+     } else {
        alert("Please enter a valid 5-digit zipcode.")
      }
-     //reset the input}
+
      line1Field.val("");
      cityField.val("");
      stateField.val("");
@@ -46,13 +41,10 @@
  }
 
  function fetchData(baseURL, zipcode) {
-   //make the complete url by concatenating 
-   //the endpoint and the zipcode together
    const url = baseURL + zipcode;
-   //get the JSON data
-   //and show something to the user.
+
    $.getJSON(url, showRepInfo)
-     // ... and show an error if we can't 
+
      .fail(showErr);
  }
 
@@ -85,17 +77,17 @@
       </div> 
 `
    );
-   // change the backgound image to red wallpaper
-   document.body.style.backgroundImage = "url('images/crumpled-red.jpg')";
+
+  
    return repInfoHTML;
 
  }
 
  function showRepInfo(repData) {
-   // store the element we'll be appending to
+
    const outputResults = $("row.reps");
 
-   //then empty the output region
+
    outputResults
 
      .empty()
@@ -105,7 +97,7 @@
      officials,
      offices
    } = repData;
-   //map the office info to a new object where we just need the office name and the officialIndices
+
    const formattedData = offices.map((officeData) => {
      let newOfficeData = {
        //get the office name 
@@ -118,18 +110,18 @@
 
      return newOfficeData;
    });
-   //starts the iterating over the offices
+
    for (let office of formattedData) {
-     //pulls out just the Senators and the US Reps 
+
      if ((office.name.indexOf("United States House") >= 0) || (office.name === "United States Senate"))
-       // iterates over the officials in the Senator or Rep office  //to find the Twitter handle
+
        for (let official of office.officials) {
          function isTwitter(socialMedia) {
            return socialMedia.type === "Twitter";
          }
          const twitterHandle = (official.channels.find(isTwitter).id);
 
-         //and to find the Facebook handle       
+
          function isFacebook(socialMedia) {
            return socialMedia.type === "Facebook";
          }
@@ -146,7 +138,7 @@
            facebook: facebookHandle
          }
          let htmlResults = formatRepInfo(officialInfo);
-         //output the results
+
          outputResults
            .append(htmlResults);
        }
@@ -156,14 +148,13 @@
      e.preventDefault();
      $(e.currentTarget).siblings(".tweets").toggleClass("hidden");
    })
+   //start a new search
    $(".new-search-button").on("click", function (event) {
-     $(".new-search").addClass("hidden");
      $(".js-search-form").removeClass("hidden");
      $(".js-search-results").addClass("hidden");
-     document.body.style.backgroundImage = "url('images/US-Capitol.JPG')";
-   })
+     })
 
-   //load the tweets
+
    twttr.widgets.load();
  }
  //handle user input errors
@@ -183,7 +174,7 @@
      errMsg = `We couldn't reach the database's servers!`
    }
    const errHTML = (
-     `<div class="error"">
+     `<div class="error">
         <p>${errMsg}. Please enter a valid 5-digit zipcode!<p>
       </div>`
    );

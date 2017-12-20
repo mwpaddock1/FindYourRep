@@ -20,7 +20,7 @@
           <legend class="legend-box">
             <h1>Learn who your United States representatives are by inputting your address:</h1>
           </legend>
-          <div class="address-box">
+          <section class="address-box">
             <div class="street-box">
               <input type="line1" name='line1' id="line1" placeholder="123 Any Street" autofocus required/>
               <label for="line1" class="input-label">Street</label>
@@ -89,27 +89,24 @@
                 <label for="state-dropdown" class="input-label state">State</label>
               </div>
               <div class="zipcode-box">
-                <input type="text" name="zipcode" id="code" class="zip search js-query" placeholder="ex.10022" title="zipcode"/>
+                <input type="text" name="zipcode" id="code" class="zip search js-query" placeholder="ex.10022" title="zipcode" />
                 <label for="code" class="input-label zipcode" required>5-digit Zip Code</label>
                 <br>
               </div>
             </div>
-          </div>
+          </section>
         </fieldset>
         <div class="button-box">
           <button type="submit">Lookup Representatives</button>
         </div>
-
-        </fieldset>
       </form>
-      <div class="js-search-results hidden" aria-live="assertive">
-        <div class="new-search hidden">
+      <section class="js-search-results hidden" aria-live="assertive">
+        <div class="new-search">
           <button class="new-search-button">New Search</button>
         </div>
         <row class="reps">
         </row>
-
-      </div>
+      </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="index.js"></script>
