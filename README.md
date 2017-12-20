@@ -23,6 +23,10 @@ Process:
 
   A new search can be initiated by clicking the button at the top of the page.
   
+  
+  <img src="https://user-images.githubusercontent.com/26368079/34223309-dcf08a06-e58c-11e7-918d-ad3be3287ca2.png" width="45%"></img> 
+  
+  
 
 Key technologies:  HTML, CSS, JavaScript, jQuery
 
