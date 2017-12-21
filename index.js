@@ -78,15 +78,12 @@
 `
    );
 
-  
    return repInfoHTML;
-
  }
 
  function showRepInfo(repData) {
 
    const outputResults = $("row.reps");
-
 
    outputResults
 
@@ -152,8 +149,7 @@
    $(".new-search-button").on("click", function (event) {
      $(".js-search-form").removeClass("hidden");
      $(".js-search-results").addClass("hidden");
-     })
-
+   })
 
    twttr.widgets.load();
  }
