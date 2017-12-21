@@ -9,6 +9,7 @@ body {
   margin-bottom: 20px;
 }
 
+
 /*format the search form*/
 
 form {
@@ -44,9 +45,13 @@ fieldset {
   align-items: center;
   vertical-align: top;
 }
-.street-box, .address-end, .city-box {
+
+.street-box,
+.address-end,
+.city-box {
   width: 90%;
- }
+}
+
 .input-label {
   display: flex;
   text-align: center;
@@ -86,7 +91,7 @@ label.input-label.city {
   font-size: 1.2rem;
   border: 3px solid #2934B1;
   border-radius: 7px;
-  }
+}
 
 input.zip,
 label.input-label.zip {
@@ -95,7 +100,6 @@ label.input-label.zip {
 
 .state-box {
   object-fit: contain;
- 
 }
 
 .zipcode-box {
@@ -147,7 +151,7 @@ h3 {
   text-align: center;
   color: #D0D1DC;
   display: inline-block;
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 
 .hidden {
@@ -221,7 +225,6 @@ li {
   color: #2A2544;
   text-align: center;
   padding-top: 1%;
-  
 }
 
 .tweets {
@@ -230,6 +233,7 @@ li {
   width: 100%;
   margin-bottom: 20px;
 }
+
 .tweets-button {
   /* padding: 22px 5px; */
   width: 25%;
@@ -269,12 +273,15 @@ header {
   display: flex;
   align-items: center;
 }
-.tweets-button, .new-search-button {
+
+.tweets-button,
+.new-search-button {
   color: #2D325B;
   background-color: #D0D1DC;
   font-weight: bold;
   padding: 2%;
-  }
+}
+
 .new-search {
   background-color: #2D325B;
   text-align: center;
@@ -290,14 +297,17 @@ header {
   display: block;
   border-radius: 7px;
   border: 2px solid #AF0001
-  }
-  
+}
+
 .new-search:hover {
   opacity: 0.7;
 }
+
 .tweets-button:hover {
   opacity: 0.5;
 }
+
+
 /*For non-mobile devices*/
 
 @media only screen and (min-width: 640px) {
@@ -321,16 +331,13 @@ header {
   .legend-box {
     width: 80%;
   }
-  
   .address-box {
     flex-direction: column;
   }
-  
   input.city,
   label.input-label.city {
     width: 100%;
   }
-  
   #state-dropdown {
     padding: 15%;
     box-sizing: border-box;
