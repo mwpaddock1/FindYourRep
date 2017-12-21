@@ -11,7 +11,7 @@ Process:
   
   
   
-  <img src="./readme-images/FindYourUSRepresentatives.png" width="30%"></img> 
+  <img src="./readme-images/FindYourUSRepsFirstPage.png" width="30%"></img> 
   
   The user’s Representative from the US House of Representatives and United States Senators from the US Senate are then displayed with a headshot photo and basic descriptive information.  
   
