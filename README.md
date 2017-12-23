@@ -11,7 +11,7 @@ Process:
   
   
   
-  <img src="https://user-images.githubusercontent.com/26368079/34222694-63aa1538-e58a-11e7-932f-8636f0772da5.png" width="30%"></img> 
+  <img src="./readme-images/FindYourUSRepsFirstPage.png" width="30%"></img> 
   
   The user’s Representative from the US House of Representatives and United States Senators from the US Senate are then displayed with a headshot photo and basic descriptive information.  
   

@@ -10,7 +10,7 @@
      //hide the search form and display the results
      $(".js-search-form").addClass("hidden");
      $(".js-search-results").removeClass("hidden");
-     $(".new-search").removeClass("hidden");
+    //  $(".new-search").removeClass("hidden");
 
      const line1Field = $("input[name=line1]");
      const cityField = $("input[name=city");
