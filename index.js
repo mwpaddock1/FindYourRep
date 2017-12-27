@@ -10,10 +10,9 @@
      //hide the search form and display the results
      $(".js-search-form").addClass("hidden");
      $(".js-search-results").removeClass("hidden");
-    //  $(".new-search").removeClass("hidden");
-
+    
      const line1Field = $("input[name=line1]");
-     const cityField = $("input[name=city");
+     const cityField = $("input[name=city]");
      const stateField = $("select[name=state]");
      const zipcodeField = $("input[name=zipcode]");
 
@@ -70,10 +69,12 @@
          <li>Go to Facebook: <a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook" aria-label="Go to Facebook" role="none"></a></li>
           </ul>
         </section>
+        ${officialInfo.hasTweets ? `
         <button class="tweets-button">Tweets</button>
         <section class="tweets hidden">
           <a class="twitter-timeline" href="https://twitter.com/${officialInfo.tweets}"></a>
-        </section> 
+        </section>
+        ` : ''} 
       </div> 
 `
    );
@@ -116,7 +117,8 @@
          function isTwitter(socialMedia) {
            return socialMedia.type === "Twitter";
          }
-         const twitterHandle = (official.channels.find(isTwitter).id);
+         const hasTweets = (official.channels.some(isTwitter))
+         const twitterHandle =  hasTweets ?  (official.channels.find(isTwitter).id): null;
 
 
          function isFacebook(socialMedia) {
@@ -132,6 +134,7 @@
            urls: official.urls,
            photoUrl: official.photoUrl,
            tweets: twitterHandle,
+           hasTweets: hasTweets,
            facebook: facebookHandle
          }
          let htmlResults = formatRepInfo(officialInfo);
