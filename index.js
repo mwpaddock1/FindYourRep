@@ -10,7 +10,7 @@
      //hide the search form and display the results
      $(".js-search-form").addClass("hidden");
      $(".js-search-results").removeClass("hidden");
-    
+
      const line1Field = $("input[name=line1]");
      const cityField = $("input[name=city]");
      const stateField = $("select[name=state]");
@@ -66,9 +66,10 @@
             <li>Party: ${officialInfo.party}</li>
             <li>Phone: ${officialInfo.phones}</li>
             <li><a href ='${officialInfo["urls"]}' target="_blank">Visit the official website</a></li>
-         <li>Go to Facebook: <a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook" aria-label="Go to Facebook" role="none"></a></li>
+        ${officialInfo.hasFacebook ? `<li>Go to Facebook: <a href="https://www.facebook.com/${officialInfo.facebook}" target="_blank" class="fa fa-facebook" aria-label="Go to Facebook" role="none"></a></li>` : ''};
           </ul>
         </section>
+
         ${officialInfo.hasTweets ? `
         <button class="tweets-button">Tweets</button>
         <section class="tweets hidden">
@@ -118,13 +119,15 @@
            return socialMedia.type === "Twitter";
          }
          const hasTweets = (official.channels.some(isTwitter))
-         const twitterHandle =  hasTweets ?  (official.channels.find(isTwitter).id): null;
+         const twitterHandle = hasTweets ? (official.channels.find(isTwitter).id) : null;
 
 
          function isFacebook(socialMedia) {
            return socialMedia.type === "Facebook";
          }
-         const facebookHandle = (official.channels.find(isFacebook).id);
+         const hasFacebook = (official.channels.some(isFacebook))
+         const facebookHandle = hasFacebook ? (official.channels.find(isFacebook).id) : null;
+         
          //gets the details on the specific official
          let officialInfo = {
            officeName: office.name,
@@ -135,7 +138,8 @@
            photoUrl: official.photoUrl,
            tweets: twitterHandle,
            hasTweets: hasTweets,
-           facebook: facebookHandle
+           facebook: facebookHandle,
+           hasFacebook: hasFacebook
          }
          let htmlResults = formatRepInfo(officialInfo);
 
