@@ -13,7 +13,7 @@
     //  $(".new-search").removeClass("hidden");
 
      const line1Field = $("input[name=line1]");
-     const cityField = $("input[name=city");
+     const cityField = $("input[name=city]");
      const stateField = $("select[name=state]");
      const zipcodeField = $("input[name=zipcode]");
 
