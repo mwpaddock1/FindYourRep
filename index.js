@@ -11,35 +11,36 @@ function handleForm() {
     const cityField = $("input[name=city]");
     const stateField = $("select[name=state]");
     const zipcodeField = $("input[name=zipcode]");
-    
+
     const voterLine1 = line1Field.val();
     const voterCity = cityField.val();
     const voterState = stateField.val();
     const voterZipcode = zipcodeField.val();
     const voterAddress = (voterLine1 + voterCity + voterState + voterZipcode);
 
+    line1Field.val("");
+    cityField.val("");
+    stateField.val("");
+    zipcodeField.val("");
     if (voterZipcode.length === 5) {
       //hide the search form and display the results
       $(".js-search-form").addClass("hidden");
       $(".js-search-results").removeClass("hidden");
-      line1Field.val("");
-      cityField.val("");
-      stateField.val("");
-      zipcodeField.val("");
+      $(".new-search").removeClass("hidden");
 
       fetchData(CONGRESSPERSON_SEARCH_URL, voterAddress);
+
     } else {
       alert("Please enter a valid 5-digit zipcode.")
     }
   })
-}
 
-function fetchData(baseURL, zipcode) {
-  const url = baseURL + zipcode;
+  function fetchData(baseURL, zipcode) {
+    const url = baseURL + zipcode;
 
-  $.getJSON(url, showRepInfo)
-
-    .fail(showErr);
+    $.getJSON(url, showRepInfo)
+      .fail(showErr);
+  }
 }
 
 function formatRepInfo(officialInfo) {
@@ -170,16 +171,17 @@ function showErr(err) {
   if (status === 503) {
     errMsg = `We couldn't reach the database's servers!`
   }
-   const errHTML = (
-     `<div class="error">
+  const errHTML = (
+    `<div class="error">
         <p>${errMsg}. Please enter a valid address!<p>
       </div>`
   );
   $(".js-search-form").removeClass("hidden");
+
   outputResults
-    .empty()
     .append(errHTML)
-    .prop("hidden", false);
+  
 }
+
 
 $(handleForm);
