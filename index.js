@@ -26,8 +26,8 @@ function handleForm() {
       //hide the search form and display the results
       $(".js-search-form").addClass("hidden");
       $(".js-search-results").removeClass("hidden");
-      $(".new-search").removeClass("hidden");
-
+      $(".js-handle-errors").addClass("hidden");
+     
       fetchData(CONGRESSPERSON_SEARCH_URL, voterAddress);
 
     } else {
@@ -74,7 +74,6 @@ function formatRepInfo(officialInfo) {
      </div> 
 `
   );
-
   return repInfoHTML;
 }
 
@@ -86,7 +85,6 @@ function showRepInfo(repData) {
 
     .empty()
   //store the parts we want from the data
-  //using object destructuring
   let {
     officials,
     offices
@@ -123,7 +121,7 @@ function showRepInfo(repData) {
         const hasFacebook = (official.channels.some(isFacebook))
         const facebookHandle = hasFacebook ? (official.channels.find(isFacebook).id) : null;
 
-        //gets the details on the specific official
+        //get the details on the specific official
         let officialInfo = {
           officeName: office.name,
           name: official.name,
@@ -157,7 +155,7 @@ function showRepInfo(repData) {
 }
 //handle user input errors
 function showErr(err) {
-  const outputResults = $("row.reps");
+  const outputResults = $("row.errors");
   const {
     status
   } = err;
@@ -177,11 +175,11 @@ function showErr(err) {
       </div>`
   );
   $(".js-search-form").removeClass("hidden");
+  $(".js-search-results").addClass("hidden");
+  $(".js-handle-errors").removeClass("hidden");
 
   outputResults
     .append(errHTML)
-  
 }
-
 
 $(handleForm);

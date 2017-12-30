@@ -227,9 +227,11 @@ li {
   text-align: center;
   padding-top: 1%;
 }
+
 .info-box {
   height: 160px;
 }
+
 .tweets {
   font-size: 1.0em;
   box-sizing: border-box;
